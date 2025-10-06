@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Moving Train Example</title>
+  <style>
+    #track {
+      width: 100%;
+      height: 150px;
+      border: 2px solid black;
+      position: relative;
+      background: #eee;
+      overflow: hidden;
+    }
+    #train {
+      position: absolute;
+      top: 30px;
+      left: 0px;
+      transition: left 0.5s;
+      width: 120px;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+    }
+  </style>
+  <script>
+    let pos = 0; // initial position
+    function moveRight() {
+      pos += 50; // move by 50px
+      document.getElementById("train").style.left = pos + "px";
+    }
+    function moveLeft() {
+      pos -= 50; // move back
+      if (pos < 0) pos = 0; // stop at start
+      document.getElementById("train").style.left = pos + "px";
+    }
+    function stopTrain() {
+      alert("Train stopped at position: " + pos + "px");
+    }
+    window.onload = function() {
+      document.getElementById("rightBtn").addEventListener("click", moveRight);
+      document.getElementById("leftBtn").addEventListener("click", moveLeft);
+      document.getElementById("stopBtn").addEventListener("click", stopTrain);
+    };
+  </script>
+</head>
+<body>
+  <h2>🚂 Moving Train Example (Event Handling)</h2>
+  <div id="track">
+    <img src="https://i.ibb.co/hVyRzQ9/train.png" id="train" alt="train">
+  </div>
+  <br>
+  <button id="leftBtn">⬅️ Move Left</button>
+  <button id="rightBtn">➡️ Move Right</button>
+  <button id="stopBtn">🛑 Stop</button>
+</body>
+</html>
